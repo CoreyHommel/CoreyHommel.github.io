@@ -33,7 +33,7 @@
             z-index: 100;
         }
         .logo {
-            height: 50px; /* Slightly smaller than home page for a cleaner top bar */
+            height: 50px; 
             width: auto;
         }
         .back-link {
@@ -99,6 +99,11 @@
             border-radius: 4px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             display: block;
+            cursor: pointer; /* Makes it clear the image is clickable */
+            transition: opacity 0.3s ease;
+        }
+        .gallery img:hover {
+            opacity: 0.8; /* Dims slightly when hovered */
         }
 
         /* Minimalist Footer */
@@ -109,6 +114,51 @@
             color: #777;
             letter-spacing: 1px;
             background-color: #fafafa;
+        }
+
+        /* ========================================== */
+        /* LIGHTBOX CSS (For the pop-up images)       */
+        /* ========================================== */
+        .lightbox {
+            display: none; 
+            position: fixed;
+            z-index: 999; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); 
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 4px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+            animation: zoom 0.3s ease; 
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0.95); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-lightbox:hover {
+            color: #bbb;
         }
     </style>
 </head>
@@ -123,8 +173,6 @@
 
     <main>
         <h1 class="page-title">Academic Projects</h1>
-
-<!-- YOU ADD / MODIFY PROJECTS AND THEIR IMAGES HERE -->
         
         <article class="project">
             <h2 class="project-title">Tiny Home</h2>
@@ -248,6 +296,35 @@
     <footer>
         contentedhappenings@gmail.com • Clemmons, NC
     </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.close-lightbox');
+        const galleryImages = document.querySelectorAll('.gallery img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = this.src;
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
 
 </body>
 </html>
