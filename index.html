@@ -12,7 +12,8 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh; /* Forces the page to be exactly the height of the screen */
+            height: 100vh; /* Fallback for older browsers */
+            height: 100dvh; /* Dynamic height: perfectly respects mobile browser address bars */
             overflow: hidden; /* Disables all scrolling */
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
@@ -27,7 +28,7 @@
             flex-shrink: 0; /* Prevents the header from squishing */
         }
         .logo {
-            height: 70px; /* Adjust this to make the logo larger or smaller */
+            height: 70px; 
             width: auto;
         }
 
@@ -37,13 +38,13 @@
             display: flex;
             gap: 20px;
             padding: 0 40px;
-            align-items: center; /* Centers boxes vertically */
-            justify-content: center; /* Centers boxes horizontally */
+            align-items: center; 
+            justify-content: center; 
         }
         
         /* The link boxes */
         .card {
-            flex: 1; /* Makes all three boxes equal width/height */
+            flex: 1; 
             height: 65vh; 
             position: relative;
             display: flex;
@@ -52,8 +53,6 @@
             text-decoration: none;
             border-radius: 8px;
             overflow: hidden;
-            
-            /* Placeholder background colors until you link your images */
             background-color: #5c1b40; 
             background-size: cover;
             background-position: center;
@@ -61,12 +60,10 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
-        /* Hover animation to make the boxes pop slightly */
         .card:hover {
             transform: translateY(-5px);
         }
 
-        /* Dark overlay so the white text is always readable over your images */
         .card-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -104,26 +101,28 @@
         /* ========================================== */
         @media (max-width: 768px) {
             header {
-                padding: 20px;
-                text-align: center; /* Centers the logo on mobile */
+                padding: 15px; /* Tighter padding to save space */
+                text-align: center; 
             }
             .logo {
-                height: 50px; /* Scales the logo down slightly */
+                height: 45px; /* Slightly smaller logo */
             }
             main {
-                flex-direction: column; /* Stacks the boxes vertically instead of horizontally */
-                padding: 0 20px;
-                gap: 15px; /* Slightly smaller gap between boxes */
+                flex-direction: column; 
+                padding: 0 15px;
+                gap: 12px; /* Smaller gap between the boxes */
             }
             .card {
                 width: 100%;
-                height: auto; /* Allows the boxes to size themselves vertically */
+                height: 100%; /* Tells the box to strictly fit available space */
+                min-height: 0; /* Crucial: allows boxes to shrink to ensure the footer stays on screen */
             }
             .card h2 {
-                font-size: 1.8rem; /* Scales the text down to fit nicely on narrow screens */
+                font-size: 1.6rem; /* Slightly smaller text */
+                padding: 10px;
             }
             footer {
-                padding: 15px 20px 20px;
+                padding: 10px 15px 20px; /* Tighter padding to pull the footer up safely */
             }
         }
     </style>
