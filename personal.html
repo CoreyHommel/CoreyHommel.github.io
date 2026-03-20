@@ -1,14 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Projects | Corey Hommel</title>
+    <title>Personal Projects | Corey Hommel</title>
     <style>
         /* CSS Styles */
         * {
             box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth; /* Makes the page glide down when clicking a link */
         }
         body {
             margin: 0;
@@ -61,9 +63,40 @@
             font-size: 2.5rem;
             font-weight: 300;
             color: #5c1b40;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             border-bottom: 2px solid #eaeaea;
             padding-bottom: 10px;
+        }
+
+        /* ========================================== */
+        /* PROJECT INDEX / TABLE OF CONTENTS STYLES   */
+        /* ========================================== */
+        .project-index {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 0 0 50px 0;
+            padding: 0;
+            list-style: none;
+        }
+        .project-index li {
+            margin: 0;
+        }
+        .project-index a {
+            text-decoration: none;
+            color: #5c1b40;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .project-index a:hover {
+            background-color: #5c1b40;
+            color: #fff;
+            transform: translateY(-2px);
         }
 
         /* Individual Project Styling */
@@ -71,6 +104,7 @@
             margin-bottom: 60px;
             padding-bottom: 40px;
             border-bottom: 1px solid #eaeaea;
+            scroll-margin-top: 130px; /* Prevents the sticky header from hiding the project title when jumped to */
         }
         .project:last-child {
             border-bottom: none;
@@ -161,6 +195,16 @@
         .close-lightbox:hover {
             color: #bbb;
         }
+
+        /* Mobile Adjustments for the Header and Nav */
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+            main {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -173,9 +217,16 @@
     </header>
 
     <main>
-        <h1 class="page-title">Academic Projects</h1>
+        <h1 class="page-title">Personal Projects</h1>
         
-        <article class="project">
+        <ul class="project-index">
+            <li><a href="#teapot-lighthouse">Teapot Lighthouse</a></li>
+            <li><a href="#moravian-star">Moravian Star</a></li>
+            <li><a href="#crow-models">Crow Models</a></li>
+            <li><a href="#quartz-typeface">Quartz Typeface</a></li>
+        </ul>
+        
+        <article class="project" id="teapot-lighthouse">
             <h2 class="project-title">Teapot Lighthouse</h2>
             <p class="project-description">This personal project involved modeling a teapot which had been turned into a lighthouse for mice.</p>
             
@@ -184,7 +235,7 @@
             </div>
         </article>
 
-        <article class="project">
+        <article class="project" id="moravian-star">
             <h2 class="project-title">Moravian Star</h2>
             <p class="project-description">This is a Moravian star with ornate cutouts designed to be assembled from a kit of easily 3D printable parts.</p>
             
@@ -193,7 +244,7 @@
             </div>
         </article>
 
-        <article class="project">
+        <article class="project" id="crow-models">
             <h2 class="project-title">Crow Models</h2>
             <p class="project-description">These are two crow models with a low and high polygon count, respectively. These were designed for use in a video game.</p>
             
@@ -203,7 +254,7 @@
             </div>
         </article>
 
-        <article class="project">
+        <article class="project" id="quartz-typeface">
             <h2 class="project-title">Quartz Typeface</h2>
             <p class="project-description">This typeface was inspired by the unique shape of quartz crystals.</p>
             
